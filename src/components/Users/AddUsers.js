@@ -14,6 +14,7 @@ const AddUsers = (props) => {
       return;
     }
     console.log(user, age);
+    props.onAddUser(user, age);
     setUser("");
     setAge("");
   };
