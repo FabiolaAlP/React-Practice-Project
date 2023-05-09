@@ -39,6 +39,7 @@ const AddUsers = (props) => {
     if (event.target.files.length !== 0) {
       setImage(URL.createObjectURL(event.target.files[0]));
     }
+    return;
   };
   const errorHandler = () => {
     setError(null);
