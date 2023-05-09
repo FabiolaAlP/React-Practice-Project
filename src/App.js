@@ -4,12 +4,17 @@ import UsersList from "./components/Users/UsersList";
 
 function App() {
   const [usersList, setUsersList] = useState([]);
-  const addUserHandler = (userName, userAge) => {
+  const addUserHandler = (userName, userAge, imgUrl) => {
     //we pass a function to get a previous state snapshot
     setUsersList((prevUsersList) => {
       return [
         ...prevUsersList,
-        { name: userName, age: userAge, id: Math.random().toString() },
+        {
+          name: userName,
+          age: userAge,
+          image: imgUrl,
+          id: Math.random().toString(),
+        },
       ];
     });
   };

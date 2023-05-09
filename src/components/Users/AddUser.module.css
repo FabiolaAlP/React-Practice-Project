@@ -24,3 +24,8 @@
     outline: none;
     border-color: #4f005f;
 }
+
+.image {
+    max-width: 100%;
+    height: auto;
+}

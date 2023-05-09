@@ -6,6 +6,7 @@ import ErrorModal from "../UI/ErrorModal";
 const AddUsers = (props) => {
   const [user, setUser] = useState("");
   const [age, setAge] = useState("");
+  const [image, setImage] = useState("");
   const [error, setError] = useState();
   const addUserHandler = (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ const AddUsers = (props) => {
       return;
     }
     // console.log(user, age);
-    props.onAddUser(user, age);
+    props.onAddUser(user, age, image);
     setUser("");
     setAge("");
   };
@@ -33,6 +34,11 @@ const AddUsers = (props) => {
   };
   const ageChangeHandler = (event) => {
     setAge(event.target.value);
+  };
+  const imageChangeHandler = (event) => {
+    if (event.target.files.length !== 0) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+    }
   };
   const errorHandler = () => {
     setError(null);
@@ -47,7 +53,7 @@ const AddUsers = (props) => {
         />
       )}
       <Card className={classes.input}>
-        <form onSubmit={addUserHandler}>
+        <form onSubmit={addUserHandler} encType="multipart/form">
           <label htmlFor="username">Username</label>
           <input
             id="username"
@@ -62,6 +68,9 @@ const AddUsers = (props) => {
             value={age}
             onChange={ageChangeHandler}
           />
+          <label htmlFor="age">Photo</label>
+          <input id="photo" type="file" onChange={imageChangeHandler} />
+          <img className={classes.image} src={image} alt="user file" />
           <Button type="submit">Add User</Button>
         </form>
       </Card>
