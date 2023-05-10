@@ -54,7 +54,7 @@ const AddUsers = (props) => {
         />
       )}
       <Card className={classes.input}>
-        <form onSubmit={addUserHandler} encType="multipart/form">
+        <form onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
           <input
             id="username"
@@ -69,7 +69,7 @@ const AddUsers = (props) => {
             value={age}
             onChange={ageChangeHandler}
           />
-          <label htmlFor="age">Photo</label>
+          <label htmlFor="photo">Photo</label>
           <input id="photo" type="file" onChange={imageChangeHandler} />
           <img className={classes.image} src={image} alt="user file" />
           <Button type="submit">Add User</Button>
